@@ -455,7 +455,7 @@ print("Actual label:", y_val_tensor[0].item())
 model.load_state_dict(torch.load("best_model.pt"))
 model.eval()
 
-# Load and tokenize the real test set the same way you did train/val
+# Load and tokenize the real test set the same way I did train/val
 test_path = Path("path here")
 test_positive_path = test_path / "pos"
 test_negative_path = test_path / "neg"
@@ -474,7 +474,7 @@ for file in test_negative_path.glob("*.txt"):
 print(f"Test reviews: {len(test_reviews)}")
 
 # Tokenize using the SAME token_dictionary built from training data
-# (do NOT rebuild the dictionary from test data — that would leak info)
+# dont rebuild in order to not leak info
 test_token_list = []
 for string in test_reviews:
     string = clean(string)
